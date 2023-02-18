@@ -19,3 +19,5 @@ az staticwebapp create \
   --app-location "src" \
   --login-with-github \
   --output none
+
+az staticwebapp show --name "swa-$resource_suffix" --resource-group "rg-$resource_suffix" --query "defaultHostname" --output tsv
