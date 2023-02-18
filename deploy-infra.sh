@@ -5,3 +5,8 @@ if [[ $is_logged_in == "ERROR:"* ]]; then
 fi
 
 resource_suffix=$(openssl rand -hex 4)
+
+location="westus2"
+
+az group create --name "rg-$resource_suffix" --location "$location" --output none
+
