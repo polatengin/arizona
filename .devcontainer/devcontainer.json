@@ -12,5 +12,9 @@
     "ghcr.io/devcontainers-contrib/features/typescript:2": {},
     "ghcr.io/eitsupi/devcontainer-features/jq-likes:1": {}
   },
+  "customizations": {
+    "vscode": {
+    }
+  },
   "remoteUser": "root"
 }
