@@ -3,3 +3,5 @@ if [[ $is_logged_in == "ERROR:"* ]]; then
   echo "Please login to Azure CLI"
   exit 1
 fi
+
+resource_suffix=$(openssl rand -hex 4)
