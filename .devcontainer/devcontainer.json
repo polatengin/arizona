@@ -1,3 +1,4 @@
 {
   "name": "Arizona Dev Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
 }
