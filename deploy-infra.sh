@@ -10,3 +10,12 @@ location="westus2"
 
 az group create --name "rg-$resource_suffix" --location "$location" --output none
 
+az staticwebapp create \
+  --name "swa-$resource_suffix" \
+  --resource-group "rg-$resource_suffix" \
+  --source https://github.com/polatengin/arizona \
+  --location "$location" \
+  --branch "main" \
+  --app-location "src" \
+  --login-with-github \
+  --output none
