@@ -1,11 +1,19 @@
+"use client";
+
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
 import NavBar from '@/components/navbar';
+import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  useEffect(() => {
+    fetch('/.auth/me').then((res) => res.json()).then((data) => {
+      console.log(data);
+    });
+  });
   return (
     <main className={styles.main}>
       <NavBar user={null} />
