@@ -4,20 +4,19 @@ if [[ $is_logged_in == "ERROR:"* ]]; then
   exit 1
 fi
 
-resource_suffix=$(openssl rand -hex 4)
+RESOURCE_SUFFIX=$(openssl rand -hex 4)
+LOCATION="westus2"
 
-location="westus2"
-
-az group create --name "rg-$resource_suffix" --location "$location" --output none
+az group create --name "rg-arizona-${RESOURCE_SUFFIX}" --location "${LOCATION}" --output none
 
 az staticwebapp create \
-  --name "swa-$resource_suffix" \
-  --resource-group "rg-$resource_suffix" \
+  --name "swa-${RESOURCE_SUFFIX}" \
+  --resource-group "rg-arizona-${RESOURCE_SUFFIX}" \
   --source https://github.com/polatengin/arizona \
-  --location "$location" \
+  --location "${LOCATION}" \
   --branch "main" \
   --app-location "src" \
   --login-with-github \
   --output none
 
-az staticwebapp show --name "swa-$resource_suffix" --resource-group "rg-$resource_suffix" --query "defaultHostname" --output tsv
+echo "https://$(az staticwebapp show --name "swa-${RESOURCE_SUFFIX}" --resource-group "rg-arizona-${RESOURCE_SUFFIX}" --query "defaultHostname" --output tsv)"
